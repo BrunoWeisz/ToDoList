@@ -219,4 +219,12 @@ describe('toDoListTest', () => {
         expect(()=>{newList.descriptionInProject(id, project)}).toThrow(Error);
         expect(()=>{newList.descriptionInProject(id, project)}).toThrow("Non existent project");
     });
+    test('can create empty project', () => { 
+        let newList = createEmptyTodoList();
+        let project = "cena";
+        newList.newProject(project);
+
+        expect(newList.existsProjectNamed(project)).toEqual(true);
+        expect(newList.isProjectEmpty(project)).toEqual(true);
+    });
 });

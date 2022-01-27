@@ -74,6 +74,10 @@ function createEmptyProject(aName){
         this._todos = this._todos.filter(todo => todo.id != anId);
     }
 
+    function isEmpty(){
+        return this._todos.length == 0;
+    }
+
     return {
         _name: aName,
         _todos: [],
@@ -83,7 +87,8 @@ function createEmptyProject(aName){
         dueDateOf,
         priorityOf,
         hasTodo,
-        removeTodo
+        removeTodo,
+        isEmpty
     }
 }
 
@@ -148,6 +153,18 @@ function createEmptyTodoList(){
         this._projects = this._projects.filter(pr => !pr.hasName(aProject));
     }
 
+    function newProject(aProjectName){
+        this._projects.push(createEmptyProject(aProjectName));
+    }
+
+    function existsProjectNamed(aProjectName){
+        return this._projects.some(pr => pr.hasName(aProjectName));
+    }
+
+    function isProjectEmpty(aProjectName){
+        return this._projects.find(pr => pr.hasName(aProjectName)).isEmpty();
+    }
+
     return {
         _empty: true,
         _projects: [],
@@ -159,7 +176,10 @@ function createEmptyTodoList(){
         priorityInProject,
         dueDateInProject,
         removeTodo,
-        removeProject
+        removeProject,
+        existsProjectNamed,
+        isProjectEmpty,
+        newProject
     }
 }
 

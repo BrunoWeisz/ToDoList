@@ -149,6 +149,8 @@ describe('Session Administrator Test', () => {
         expect(admin.registeredUser(username1)).toEqual(true);
         expect(admin.currentlyLogged(username1)).toEqual(false);
     });
+
+    
     
     
 });
